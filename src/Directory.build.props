@@ -1,0 +1,70 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!--
+		- Don't copy assembly references as they may be framework specific (are installed on the machine. Like .Net Framework)
+		- Don't copy project references. These projects are build anyway as part of the solution  
+		- (NuGet) package reference output will be copied (the version for that runtime) to the output folder. 
+		   - For .Net framework applications they will be copied under a lib folder. The application should add lib as probing path in App.config 
+		   - For .Core applications they will be copied directly in the output folder. (simple probing in sub directory is not possible. Only using a NuGet folder style)
+	-->
+	<ItemDefinitionGroup>
+		<Reference>
+			<Private>False</Private>
+		</Reference>
+		<ProjectReference>
+			<Private>False</Private>
+		</ProjectReference>
+		<!--<PackageReference>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>-->
+	</ItemDefinitionGroup>
+
+    <PropertyGroup>
+        <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+    </PropertyGroup>
+    
+	<!-- Copies NuGet references for .netstandard projects -->
+	<PropertyGroup>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<!--
+		This is needed for dotnet pack to work correctly when the no-build argument is used
+		(used on the build server)
+	-->
+	<PropertyGroup>
+		<SolutionDir>$(MSBuildThisFileDirectory)..\</SolutionDir>
+	</PropertyGroup>
+
+	<!-- 
+		Variables used in project files
+		- BuildDir sets the base build directory for the module, it is then used in the project file, 
+		  If you need to specify subdirectory <OutputPath>$(BuildDir)Apps\ApplicationName</OutputPath>
+		- Module version is used to define the assembly version
+	-->
+	<PropertyGroup>
+        <ModuleName>KodlamaIODevs</ModuleName>
+		<BuildDir>$(SolutionDir)bin\$(Configuration)\</BuildDir>
+		<ModuleVersion>1.0.0</ModuleVersion>
+	</PropertyGroup>
+
+	<!--
+		Defines common properties in the project file. These properties can be overwritten in the project file itself.
+		These properties are used instead of the AssemblyInfo.cs class
+	-->
+	<PropertyGroup>
+		<VersionPrefix>$(ModuleVersion)</VersionPrefix>
+		<FileVersion>$(ModuleVersion).0</FileVersion>
+		<OutputPath>$(BuildDir)</OutputPath>
+		<Copyright>Copyright @ 2021</Copyright>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageOutputPath>C:\nuget.local\packages</PackageOutputPath>
+		<PackageProjectUrl>https://innovamps.visualstudio.com/Innova</PackageProjectUrl>
+		<!--Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element)-->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<!--Optional: Embed source files that are not tracked by the source control manager in the PDB-->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<BuildUIWebSocket>true</BuildUIWebSocket>
+	</PropertyGroup>
+</Project>
