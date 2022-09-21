@@ -33,6 +33,4 @@ public class ProgrammingLanguage : Entity
     {
         this.Name = name;
     }
-
-
 }

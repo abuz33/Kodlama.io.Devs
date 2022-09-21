@@ -39,13 +39,13 @@ public class KodlamaIODevsDbContext : DbContext
             a.Property(p => p.DeletedDate).HasColumnName("DeletedDate");
             a.HasMany(p => p.Frameworks);
         });
-        ProgrammingLanguage[] programmingLanguagesSeeds =
-        {
-            new(Guid.Parse("52120BB7-82F4-4FB7-9796-83F330C5ABD7"), "C#"),
-            new(Guid.Parse("A827A9D1-8087-4E4D-BA7D-024903777CDA"), "JavaScript"),
-            new(Guid.Parse("AB2F1F1E-D05D-4DB0-BE45-E530836B12D2"), "TypeScript")
-        };
-        modelBuilder.Entity<ProgrammingLanguage>().HasData(programmingLanguagesSeeds);
+        //ProgrammingLanguage[] programmingLanguagesSeeds =
+        //{
+        //    new(Guid.Parse("52120BB7-82F4-4FB7-9796-83F330C5ABD7"), "C#"),
+        //    new(Guid.Parse("A827A9D1-8087-4E4D-BA7D-024903777CDA"), "JavaScript"),
+        //    new(Guid.Parse("AB2F1F1E-D05D-4DB0-BE45-E530836B12D2"), "TypeScript")
+        //};
+        //modelBuilder.Entity<ProgrammingLanguage>().HasData(programmingLanguagesSeeds);
         #endregion
 
         #region Framework
@@ -62,13 +62,13 @@ public class KodlamaIODevsDbContext : DbContext
             a.Property(p => p.DeletedDate).HasColumnName("DeletedDate");
             a.HasOne(p => p.ProgrammingLanguage);
         });
-        Framework[] frameworkSeeds =
-        {
-            new(Guid.NewGuid(),Guid.Parse("52120BB7-82F4-4FB7-9796-83F330C5ABD7"),  ".NET", "6.0.8"),
-            new(Guid.NewGuid(),Guid.Parse("A827A9D1-8087-4E4D-BA7D-024903777CDA"),  "React", "18.2.0"),
-            new(Guid.NewGuid(),Guid.Parse("AB2F1F1E-D05D-4DB0-BE45-E530836B12D2"),  "Next.js", "12.22.0"),
-        };
-        modelBuilder.Entity<Framework>().HasData(frameworkSeeds);
+        //Framework[] frameworkSeeds =
+        //{
+        //    new(Guid.NewGuid(),Guid.Parse("52120BB7-82F4-4FB7-9796-83F330C5ABD7"),  ".NET", "6.0.8"),
+        //    new(Guid.NewGuid(),Guid.Parse("A827A9D1-8087-4E4D-BA7D-024903777CDA"),  "React", "18.2.0"),
+        //    new(Guid.NewGuid(),Guid.Parse("AB2F1F1E-D05D-4DB0-BE45-E530836B12D2"),  "Next.js", "12.22.0"),
+        //};
+        //modelBuilder.Entity<Framework>().HasData(frameworkSeeds);
         #endregion
 
         #region User
@@ -78,13 +78,13 @@ public class KodlamaIODevsDbContext : DbContext
             a.HasMany(p => p.RefreshTokens);
             a.HasMany(p => p.UserOperationClaims);
         });
-        // User[] userSeeds =
-        // {
-        //     new(Guid.Parse("a2c9b2a3-269c-497e-ae25-9f25e42bf5a8"), "Halil", "Toksöz",  "toksozhalil@gmail.com"), 
-        //     new(Guid.Parse("cbc0bf81-ba09-42c3-8d90-cf4a3bcd4e14"), "Ulaş", "Bağlı",  "ulasbagli@gmail.com"), 
-        //     new(Guid.Parse("d8797db2-39f8-4bdc-981b-0042d1690ae1"), "Emre", "Koçan",  "emrekocan@gmail.com")
+        //User[] userSeeds =
+        //{
+        //     new(Guid.Parse("a2c9b2a3-269c-497e-ae25-9f25e42bf5a8"), "Abuzer", "Alaca",  "abuzeralaca@gmail.com"),
+        //     new(Guid.Parse("cbc0bf81-ba09-42c3-8d90-cf4a3bcd4e14"), "Arife", "Cali",  "asda@test.com"),
+        //     new(Guid.Parse("d8797db2-39f8-4bdc-981b-0042d1690ae1"), "Asude Zumra", "Cali",  "asude1231@test.com")
         // };
-        // modelBuilder.Entity<User>().HasData(userSeeds);
+        //modelBuilder.Entity<User>().HasData(userSeeds);
 
         #endregion
 
@@ -101,13 +101,12 @@ public class KodlamaIODevsDbContext : DbContext
             a.HasOne(d => d.User);
             a.HasMany(d => d.SocialMedias);
         });
-        // Developer[] developerSeeds =
-        // {
-        //     new(Guid.Parse("99409030-86b1-48ad-8bae-b09e42d9d622"),Guid.Parse("a2c9b2a3-269c-497e-ae25-9f25e42bf5a8")), 
+        //Developer[] developerSeeds =
+        //{
+        //     new(Guid.Parse("99409030-86b1-48ad-8bae-b09e42d9d622"),Guid.Parse("a2c9b2a3-269c-497e-ae25-9f25e42bf5a8")),
         //     new(Guid.Parse("f578a7cc-905c-4741-9552-2dd4feeb4fbf"),Guid.Parse("cbc0bf81-ba09-42c3-8d90-cf4a3bcd4e14")),
         // };
-        // modelBuilder.Entity<Developer>().HasData(developerSeeds);
-
+        //modelBuilder.Entity<Developer>().HasData(developerSeeds);
         #endregion
 
         #region SocialMedia
@@ -124,12 +123,12 @@ public class KodlamaIODevsDbContext : DbContext
             a.Property(s => s.DeletedDate).HasColumnName("DeletedDate");
             a.HasOne(s => s.Developer);
         });
-        // SocialMedia[] socialMediaSeeds =
-        // {
-        //     new(Guid.Parse("bffadc3b-2e19-472c-9433-cb7f67f28afb"),Guid.Parse("99409030-86b1-48ad-8bae-b09e42d9d622"), "GitHub", "https://github.com/haliltokszz"), 
+        //SocialMedia[] socialMediaSeeds =
+        //{
+        //     new(Guid.Parse("bffadc3b-2e19-472c-9433-cb7f67f28afb"),Guid.Parse("99409030-86b1-48ad-8bae-b09e42d9d622"), "GitHub", "https://github.com/haliltokszz"),
         //     new(Guid.Parse("e2e9bdd0-dd83-4282-9660-95b1b825b9c6"),Guid.Parse("f578a7cc-905c-4741-9552-2dd4feeb4fbf"), "Github", ""),
         // };
-        // modelBuilder.Entity<SocialMedia>().HasData(socialMediaSeeds);
+        //modelBuilder.Entity<SocialMedia>().HasData(socialMediaSeeds);
 
         #endregion
 
@@ -144,13 +143,13 @@ public class KodlamaIODevsDbContext : DbContext
             a.Property(o => o.isDeleted).HasColumnName("isDeleted");
             a.Property(o => o.DeletedDate).HasColumnName("DeletedDate");
         });
-        OperationClaim[] operationClaimSeeds =
-        {
-            new(Guid.Parse("a2c9b2a3-269c-497e-ae25-9f25e42bf5a8"), OperationClaimsEnum.Admin.ToString()),
-            new(Guid.Parse("cbc0bf81-ba09-42c3-8d90-cf4a3bcd4e14"), OperationClaimsEnum.User.ToString()),
-            new(Guid.Parse("d8797db2-39f8-4bdc-981b-0042d1690ae1"), OperationClaimsEnum.Developer.ToString())
-        };
-        modelBuilder.Entity<OperationClaim>().HasData(operationClaimSeeds);
+        //OperationClaim[] operationClaimSeeds =
+        //{
+        //    new(Guid.Parse("a2c9b2a3-269c-497e-ae25-9f25e42bf5a8"), OperationClaimsEnum.Admin.ToString()),
+        //    new(Guid.Parse("cbc0bf81-ba09-42c3-8d90-cf4a3bcd4e14"), OperationClaimsEnum.User.ToString()),
+        //    new(Guid.Parse("d8797db2-39f8-4bdc-981b-0042d1690ae1"), OperationClaimsEnum.Developer.ToString())
+        //};
+        //modelBuilder.Entity<OperationClaim>().HasData(operationClaimSeeds);
         #endregion
     }
 

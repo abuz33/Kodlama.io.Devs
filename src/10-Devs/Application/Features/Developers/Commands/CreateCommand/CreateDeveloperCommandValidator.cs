@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.CrossCuttingConcerns.Constant;
+using FluentValidation;
 
-namespace Application.Features.Developers.Commands.CreateCommand
+namespace Application.Features.Developers.Commands.CreateCommand; 
+
+public class CreateDeveloperCommandValidator : AbstractValidator<CreateDeveloperCommand>
 {
-    internal class CreateDeveloperCommandValidator
+    public CreateDeveloperCommandValidator ()
     {
+        RuleFor(p => p.UserId)
+            .NotEmpty().WithMessage("{PropertyName}" + AspectMessages.IsRequired)
+            .NotNull();
     }
 }

@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace Application.Features.Developers.Commands.DeleteCommand;
 
-public class DeleteDeveloperCommandValidator : AbstractValidator<DeleteDeveloperCommand>
+public class DeleteFrameworkCommandValidator : AbstractValidator<DeleteDeveloperCommand>
 {
-    public DeleteDeveloperCommandValidator ()
+    public DeleteFrameworkCommandValidator ()
     {
         RuleFor(p => p.Id)
             .NotEmpty().WithMessage("{PropertyName}" + AspectMessages.IsRequired)

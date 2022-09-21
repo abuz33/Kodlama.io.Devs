@@ -4,6 +4,7 @@
 //
 //-------------------------------------------------------------------------------------------------
 
+using Application.Features.Authentication.Commands.UserOperationClaimCommand;
 using Application.Features.Authentication.Dtos;
 using Application.Features.Authentication.Rules;
 using Application.Services.Repositories.Users;
@@ -12,12 +13,7 @@ using Core.Security.Dtos;
 using Core.Security.Entities;
 using Core.Security.Enums;
 using Core.Security.Hashing;
-using Core.Security.JWT;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Application.Features.Authentication.Commands.RegisterCommand;
 

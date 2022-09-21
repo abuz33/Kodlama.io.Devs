@@ -4,7 +4,7 @@ public class AspectMessages
 {
     public static string WrongValidationType = "Wrong Validation Type";
     public static string WrongLoggerType = "Wrong Logger Type";
-    public static string WrongEmailFormat = "Email format does not correct";
+    public static string WrongEmailFormat = "Email format is not correct";
     public static string AuthorizationDenied = "Authorization Denied";
     public const string DoesNotExist = " does not exist";
     public const string MustBeGreaterThanZero = " must be greater than zero";

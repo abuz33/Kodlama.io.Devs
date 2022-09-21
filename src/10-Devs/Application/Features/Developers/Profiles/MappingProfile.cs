@@ -6,6 +6,7 @@
 
 using Application.Features.Developers.Commands.CreateCommand;
 using Application.Features.Developers.Commands.DeleteCommand;
+using Application.Features.Developers.Commands.UpdateCommand;
 using Application.Features.Developers.Dtos;
 using Application.Features.Developers.Dtos.BaseDto;
 using Application.Features.Developers.Models;

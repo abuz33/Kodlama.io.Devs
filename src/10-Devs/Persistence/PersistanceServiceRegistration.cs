@@ -19,57 +19,56 @@ using Persistence.Repositories.SocialMedias;
 using Persistence.Repositories.UserOperationClaims;
 using Persistence.Repositories.Users;
 
-namespace Persistence
+namespace Persistence;
+
+public static class PersistanceServiceRegistration
 {
-    public static class PersistanceServiceRegistration
+    public static IServiceCollection AddPersistenceServices (this IServiceCollection services,
+                                                    IConfiguration configuration)
     {
-        public static IServiceCollection AddPersistenceServices (this IServiceCollection services,
-                                                        IConfiguration configuration)
-        {
-            services.AddDbContext<KodlamaIODevsDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("KodlamaIODevsConnectionString")));
+        services.AddDbContext<KodlamaIODevsDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("KodlamaIODevsConnectionString")));
 
-            #region ProgrammingLanguages Repositories
-            services.AddScoped<IProgrammingLanguageWriteRepository, ProgrammingLanguageWriteRepository>();
-            services.AddScoped<IProgrammingLanguageReadRepository, ProgrammingLanguageReadRepository>();
-            #endregion
+        #region ProgrammingLanguages Repositories
+        services.AddScoped<IProgrammingLanguageWriteRepository, ProgrammingLanguageWriteRepository>();
+        services.AddScoped<IProgrammingLanguageReadRepository, ProgrammingLanguageReadRepository>();
+        #endregion
 
-            #region Frameworks Repositories
-            services.AddScoped<IFrameworkWriteRepository, FrameworkWriteRepository>();
-            services.AddScoped<IFrameworkReadRepository, FrameworkReadRepository>();
-            #endregion
+        #region Frameworks Repositories
+        services.AddScoped<IFrameworkWriteRepository, FrameworkWriteRepository>();
+        services.AddScoped<IFrameworkReadRepository, FrameworkReadRepository>();
+        #endregion
 
-            #region Users Repositories
-            services.AddScoped<IUserReadRepository, UserReadRepository>();
-            services.AddScoped<IUserWriteRepository, UserWriteRepository>();
-            #endregion
+        #region Users Repositories
+        services.AddScoped<IUserReadRepository, UserReadRepository>();
+        services.AddScoped<IUserWriteRepository, UserWriteRepository>();
+        #endregion
 
-            #region RefreshTokens Repositories
-            services.AddScoped<IRefreshTokenReadRepository, RefreshTokenReadRepository>();
-            services.AddScoped<IRefreshTokenWriteRepository, RefreshTokenWriteRepository>();
-            #endregion
+        #region RefreshTokens Repositories
+        services.AddScoped<IRefreshTokenReadRepository, RefreshTokenReadRepository>();
+        services.AddScoped<IRefreshTokenWriteRepository, RefreshTokenWriteRepository>();
+        #endregion
 
-            #region OperationClaims Repositories
-            services.AddScoped<IOperationClaimReadRepository, OperationClaimReadRepository>();
-            services.AddScoped<IOperationClaimWriteRepository, OperationClaimWriteRepository>();
-            #endregion
+        #region OperationClaims Repositories
+        services.AddScoped<IOperationClaimReadRepository, OperationClaimReadRepository>();
+        services.AddScoped<IOperationClaimWriteRepository, OperationClaimWriteRepository>();
+        #endregion
 
-            #region UserOperationClaims Repositories
-            services.AddScoped<IUserOperationClaimWriteRepository, UserOperationClaimWriteRepository>();
-            services.AddScoped<IUserOperationClaimReadRepository, UserOperationClaimReadRepository>();
-            #endregion
+        #region UserOperationClaims Repositories
+        services.AddScoped<IUserOperationClaimWriteRepository, UserOperationClaimWriteRepository>();
+        services.AddScoped<IUserOperationClaimReadRepository, UserOperationClaimReadRepository>();
+        #endregion
 
-            #region SocialMedias Repositories
-            services.AddScoped<ISocialMediaReadRepository, SocialMediaReadRepository>();
-            services.AddScoped<ISocialMediaWriteRepository, SocialMediaWriteRepository>();
-            #endregion
+        #region SocialMedias Repositories
+        services.AddScoped<ISocialMediaReadRepository, SocialMediaReadRepository>();
+        services.AddScoped<ISocialMediaWriteRepository, SocialMediaWriteRepository>();
+        #endregion
 
-            #region Developers Repositories
-            services.AddScoped<IDeveloperWriteRepository, DeveloperWriteRepository>();
-            services.AddScoped<IDeveloperReadRepository, DeveloperReadRepository>();
-            #endregion
+        #region Developers Repositories
+        services.AddScoped<IDeveloperWriteRepository, DeveloperWriteRepository>();
+        services.AddScoped<IDeveloperReadRepository, DeveloperReadRepository>();
+        #endregion
 
-            return services;
-        }
+        return services;
     }
 }

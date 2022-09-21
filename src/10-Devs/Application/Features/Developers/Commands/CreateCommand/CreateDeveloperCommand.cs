@@ -10,16 +10,10 @@ using Application.Features.Developers.Rules;
 using Application.Services.Repositories.Developers;
 using Application.Services.Repositories.Users;
 using AutoMapper;
-using Core.Security.Dtos;
 using Core.Security.Entities;
 using Core.Security.Enums;
-using Core.Security.JWT;
 using Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Application.Features.Developers.Commands.CreateCommand
 {
